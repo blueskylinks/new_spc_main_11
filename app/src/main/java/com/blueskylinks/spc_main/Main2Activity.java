@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.provider.Telephony;
 import android.support.v4.app.ActivityCompat;
@@ -59,6 +60,7 @@ public class Main2Activity extends AppCompatActivity {
                 new String[]{Manifest.permission.RECEIVE_SMS}, 200);
         ActivityCompat.requestPermissions(this,
                 new String[]{Manifest.permission.READ_PHONE_STATE}, 200);
+        Typeface typeface = Typeface.createFromAsset(getAssets(), "digital7.ttf");
         tv = findViewById(R.id.textView11);
         tv1 = findViewById(R.id.textView12);
         tv2 = findViewById(R.id.textView13);
@@ -68,6 +70,13 @@ public class Main2Activity extends AppCompatActivity {
         tc1 = findViewById(R.id.textView23);
         tc2 = findViewById(R.id.textView24);
         tc3 = findViewById(R.id.textView25);
+
+        tv2.setTypeface(typeface);
+        tv3.setTypeface(typeface);
+        tv4.setTypeface(typeface);
+        tc1.setTypeface(typeface);
+        tc2.setTypeface(typeface);
+        tc3.setTypeface(typeface);
 
         tv9=findViewById(R.id.textView29);
         if(app_status!=1){

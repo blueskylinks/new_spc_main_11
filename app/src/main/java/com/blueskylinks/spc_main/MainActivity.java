@@ -54,8 +54,7 @@ public class MainActivity extends AppCompatActivity {
     Spinner SPINNER;
     Button ADD;
     EditText EDITTEXT;
-    String[] spinnerItems = new String[]{
-         "9880760642"};
+    String[] spinnerItems = new String[]{};
     String GETTEXT;
     String gettext="111";
     List<String> stringlist;
@@ -85,10 +84,41 @@ public class MainActivity extends AppCompatActivity {
         SPINNER.setAdapter(arrayadapter);
 
         prefs = getSharedPreferences("TAG", Context.MODE_PRIVATE);
-        gettext= prefs.getString("KEY", null);
-        Log.i("value",gettext);
-        stringlist.add(gettext);
-        arrayadapter.notifyDataSetChanged();
+        gettext= prefs.getString("0", null);
+        if(gettext!=null){
+            Log.i("value",gettext);
+            stringlist.add(gettext);
+            arrayadapter.notifyDataSetChanged();
+        }
+
+        gettext= prefs.getString("1", null);
+        if(gettext!=null){
+            Log.i("value",gettext);
+            stringlist.add(gettext);
+            arrayadapter.notifyDataSetChanged();
+        }
+
+        gettext= prefs.getString("2", null);
+        if(gettext!=null){
+            Log.i("value",gettext);
+            stringlist.add(gettext);
+            arrayadapter.notifyDataSetChanged();
+        }
+
+        gettext= prefs.getString("3", null);
+        if(gettext!=null){
+            Log.i("value",gettext);
+            stringlist.add(gettext);
+            arrayadapter.notifyDataSetChanged();
+        }
+
+        gettext= prefs.getString("4", null);
+        if(gettext!=null){
+            Log.i("value",gettext);
+            stringlist.add(gettext);
+            arrayadapter.notifyDataSetChanged();
+        }
+
 
 
         SPINNER.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -96,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Subno = SPINNER.getItemAtPosition(i).toString();
                 Log.i("Selected item",Subno);
+                phoneNumber=Subno;
             }
 
             @Override
@@ -120,8 +151,15 @@ public void display_editBox(View v){
         stringlist.add(GETTEXT);
         arrayadapter.notifyDataSetChanged();
         prefs = this.getSharedPreferences("TAG", Context.MODE_PRIVATE);
-        prefs.edit().putString("KEY", GETTEXT).commit();
-        Log.i("updated string",stringlist.toString());}
+        int device_size=stringlist.size();
+        for(int i=0;i<device_size;i++){
+            if(device_size<=5) {
+                prefs.edit().putString(String.valueOf(i), stringlist.get(i)).commit();
+            }
+        }
+
+        Log.i("updated string",stringlist.toString());
+        }
         EDITTEXT.setVisibility(View.INVISIBLE);
         ADD.setVisibility(View.INVISIBLE);
     }
